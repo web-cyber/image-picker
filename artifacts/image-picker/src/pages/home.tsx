@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Plus, Trash2, Pencil, Download } from "lucide-react";
+import { Check, Plus, Trash2, Pencil, Download, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
@@ -15,40 +15,18 @@ interface Group {
   id: string;
   name: string;
   color: string;
-  bgClass: string;
-  borderClass: string;
-  textClass: string;
-  badgeBg: string;
 }
 
-const GROUPS: Group[] = [
-  {
-    id: "g1",
-    name: "Group A",
-    color: "#2d6a4f",
-    bgClass: "bg-[#2d6a4f]",
-    borderClass: "border-[#2d6a4f]",
-    textClass: "text-[#2d6a4f]",
-    badgeBg: "bg-[#2d6a4f]",
-  },
-  {
-    id: "g2",
-    name: "Group B",
-    color: "#b5451b",
-    bgClass: "bg-[#b5451b]",
-    borderClass: "border-[#b5451b]",
-    textClass: "text-[#b5451b]",
-    badgeBg: "bg-[#b5451b]",
-  },
-  {
-    id: "g3",
-    name: "Group C",
-    color: "#4a3f8f",
-    bgClass: "bg-[#4a3f8f]",
-    borderClass: "border-[#4a3f8f]",
-    textClass: "text-[#4a3f8f]",
-    badgeBg: "bg-[#4a3f8f]",
-  },
+const COLOR_PALETTE = [
+  "#2d6a4f", "#b5451b", "#4a3f8f", "#9b2335", "#1a6b7c",
+  "#7b5ea7", "#c47c1b", "#2e6b8a", "#5c6b1a", "#8b3a62",
+  "#3a5f8a", "#6b4f1a",
+];
+
+const DEFAULT_GROUPS: Group[] = [
+  { id: "g1", name: "Group A", color: COLOR_PALETTE[0] },
+  { id: "g2", name: "Group B", color: COLOR_PALETTE[1] },
+  { id: "g3", name: "Group C", color: COLOR_PALETTE[2] },
 ];
 
 const IMAGES: ImageData[] = [
@@ -68,32 +46,70 @@ const IMAGES: ImageData[] = [
 
 type SelectionState = Record<string, Set<string>>;
 
-const initialSelection = (): SelectionState =>
-  Object.fromEntries(GROUPS.map((g) => [g.id, new Set<string>()]));
+let groupCounter = DEFAULT_GROUPS.length;
 
 export default function Home() {
-  const [selections, setSelections] = useState<SelectionState>(initialSelection);
-  const [activeGroupId, setActiveGroupId] = useState<string>(GROUPS[0].id);
+  const [groups, setGroups] = useState<Group[]>(DEFAULT_GROUPS);
+  const [selections, setSelections] = useState<SelectionState>(
+    Object.fromEntries(DEFAULT_GROUPS.map((g) => [g.id, new Set<string>()]))
+  );
+  const [activeGroupId, setActiveGroupId] = useState<string>(DEFAULT_GROUPS[0].id);
   const [groupNames, setGroupNames] = useState<Record<string, string>>(
-    Object.fromEntries(GROUPS.map((g) => [g.id, g.name]))
+    Object.fromEntries(DEFAULT_GROUPS.map((g) => [g.id, g.name]))
   );
   const [editingGroupId, setEditingGroupId] = useState<string | null>(null);
   const [editDraft, setEditDraft] = useState("");
   const editInputRef = useRef<HTMLInputElement>(null);
 
-  const activeGroup = GROUPS.find((g) => g.id === activeGroupId)!;
-  const activeGroupName = groupNames[activeGroupId];
+  const activeGroup = groups.find((g) => g.id === activeGroupId) ?? groups[0];
+  const activeGroupName = groupNames[activeGroup.id] ?? activeGroup.name;
 
   type Category = "All" | "Nature" | "Architecture" | "Food";
   const CATEGORIES: Category[] = ["All", "Nature", "Architecture", "Food"];
   const [filterCategory, setFilterCategory] = useState<Category>("All");
-  const filteredImages = filterCategory === "All"
-    ? IMAGES
-    : IMAGES.filter((img) => img.category === filterCategory);
+  const filteredImages =
+    filterCategory === "All"
+      ? IMAGES
+      : IMAGES.filter((img) => img.category === filterCategory);
+
+  const addGroup = () => {
+    groupCounter += 1;
+    const newId = `g${Date.now()}`;
+    const colorIndex = groupCounter % COLOR_PALETTE.length;
+    const label = String.fromCharCode(64 + groupCounter);
+    const newGroup: Group = {
+      id: newId,
+      name: `Group ${label}`,
+      color: COLOR_PALETTE[colorIndex],
+    };
+    setGroups((prev) => [...prev, newGroup]);
+    setSelections((prev) => ({ ...prev, [newId]: new Set() }));
+    setGroupNames((prev) => ({ ...prev, [newId]: newGroup.name }));
+    setActiveGroupId(newId);
+  };
+
+  const deleteGroup = (groupId: string) => {
+    if (groups.length <= 1) return;
+    setGroups((prev) => prev.filter((g) => g.id !== groupId));
+    setSelections((prev) => {
+      const next = { ...prev };
+      delete next[groupId];
+      return next;
+    });
+    setGroupNames((prev) => {
+      const next = { ...prev };
+      delete next[groupId];
+      return next;
+    });
+    if (activeGroupId === groupId) {
+      const remaining = groups.filter((g) => g.id !== groupId);
+      setActiveGroupId(remaining[0]?.id ?? "");
+    }
+  };
 
   const startEditing = (groupId: string) => {
     setEditingGroupId(groupId);
-    setEditDraft(groupNames[groupId]);
+    setEditDraft(groupNames[groupId] ?? "");
     setTimeout(() => editInputRef.current?.select(), 0);
   };
 
@@ -115,11 +131,8 @@ export default function Home() {
   const toggleImage = (imageId: string) => {
     setSelections((prev) => {
       const groupSet = new Set(prev[activeGroupId]);
-      if (groupSet.has(imageId)) {
-        groupSet.delete(imageId);
-      } else {
-        groupSet.add(imageId);
-      }
+      if (groupSet.has(imageId)) groupSet.delete(imageId);
+      else groupSet.add(imageId);
       return { ...prev, [activeGroupId]: groupSet };
     });
   };
@@ -128,15 +141,18 @@ export default function Home() {
     setSelections((prev) => ({ ...prev, [groupId]: new Set() }));
   };
 
-  const clearAll = () => setSelections(initialSelection());
+  const clearAll = () => {
+    setSelections(Object.fromEntries(groups.map((g) => [g.id, new Set<string>()])));
+  };
 
   const exportSelections = () => {
     const lines: string[] = [];
-    GROUPS.forEach((g) => {
-      const selected = IMAGES.filter((img) => selections[g.id].has(img.id));
+    groups.forEach((g) => {
+      const name = groupNames[g.id] ?? g.name;
+      const selected = IMAGES.filter((img) => selections[g.id]?.has(img.id));
       if (selected.length === 0) return;
-      lines.push(groupNames[g.id].toUpperCase());
-      lines.push("─".repeat(groupNames[g.id].length));
+      lines.push(name.toUpperCase());
+      lines.push("─".repeat(name.length));
       selected.forEach((img, i) => {
         lines.push(`${String(i + 1).padStart(2, "0")}. ${img.title}`);
       });
@@ -153,9 +169,9 @@ export default function Home() {
   };
 
   const getImageGroups = (imageId: string): Group[] =>
-    GROUPS.filter((g) => selections[g.id].has(imageId));
+    groups.filter((g) => selections[g.id]?.has(imageId));
 
-  const totalSelected = GROUPS.reduce((sum, g) => sum + selections[g.id].size, 0);
+  const totalSelected = groups.reduce((sum, g) => sum + (selections[g.id]?.size ?? 0), 0);
 
   return (
     <div className="min-h-[100dvh] w-full bg-background flex flex-col md:flex-row overflow-hidden font-sans">
@@ -197,29 +213,41 @@ export default function Home() {
               </div>
             )}
           </div>
-          <div className="flex gap-2">
-            {GROUPS.map((g) => {
+
+          {/* Group tabs — scrollable row */}
+          <div className="flex gap-2 flex-wrap">
+            {groups.map((g) => {
               const isActive = g.id === activeGroupId;
-              const count = selections[g.id].size;
+              const count = selections[g.id]?.size ?? 0;
               return (
                 <button
                   key={g.id}
                   onClick={() => setActiveGroupId(g.id)}
                   data-testid={`button-group-${g.id}`}
-                  className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold transition-all duration-200 border-2 flex flex-col items-center gap-0.5
-                    ${isActive
-                      ? `${g.borderClass} text-white`
-                      : "border-transparent bg-muted/60 text-muted-foreground hover:bg-muted"
-                    }`}
-                  style={isActive ? { backgroundColor: g.color } : {}}
+                  className="py-2 px-3 rounded-lg text-xs font-semibold transition-all duration-200 border-2 flex flex-col items-center gap-0.5 min-w-[72px]"
+                  style={
+                    isActive
+                      ? { backgroundColor: g.color, borderColor: g.color, color: "#fff" }
+                      : { backgroundColor: "transparent", borderColor: "transparent", color: "var(--color-muted-foreground)" }
+                  }
                 >
-                  <span className="truncate max-w-full">{groupNames[g.id]}</span>
-                  <span className={`font-mono text-[10px] ${isActive ? "opacity-80" : ""}`}>
+                  <span className="truncate max-w-full">{groupNames[g.id] ?? g.name}</span>
+                  <span className="font-mono text-[10px] opacity-70">
                     {count} item{count !== 1 ? "s" : ""}
                   </span>
                 </button>
               );
             })}
+
+            {/* Add group button */}
+            <button
+              onClick={addGroup}
+              data-testid="button-add-group"
+              title="Add a new group"
+              className="py-2 px-3 rounded-lg text-xs font-semibold border-2 border-dashed border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground transition-all duration-200 flex items-center justify-center min-w-[40px]"
+            >
+              <Plus className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
@@ -228,95 +256,121 @@ export default function Home() {
         {/* Per-group selection output */}
         <ScrollArea className="flex-1 pb-8">
           <div className="px-6 md:px-8 pt-4 flex flex-col gap-6">
-            {GROUPS.map((g) => {
-              const selectedImages = IMAGES.filter((img) => selections[g.id].has(img.id));
-              return (
-                <div key={g.id} data-testid={`section-group-${g.id}`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2 flex-1 min-w-0">
-                      <span
-                        className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{ backgroundColor: g.color }}
-                      />
-                      {editingGroupId === g.id ? (
-                        <input
-                          ref={editInputRef}
-                          value={editDraft}
-                          onChange={(e) => setEditDraft(e.target.value)}
-                          onBlur={commitEdit}
-                          onKeyDown={handleEditKeyDown}
-                          className="text-xs font-semibold uppercase tracking-wider bg-transparent border-b outline-none flex-1 min-w-0"
-                          style={{ color: g.color, borderColor: g.color }}
-                          maxLength={24}
-                          data-testid={`input-rename-${g.id}`}
+            <AnimatePresence initial={false}>
+              {groups.map((g) => {
+                const selectedImages = IMAGES.filter((img) => selections[g.id]?.has(img.id));
+                return (
+                  <motion.div
+                    key={g.id}
+                    layout
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8, transition: { duration: 0.15 } }}
+                    data-testid={`section-group-${g.id}`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2 flex-1 min-w-0">
+                        <span
+                          className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                          style={{ backgroundColor: g.color }}
                         />
-                      ) : (
-                        <button
-                          className="flex items-center gap-1.5 group/rename min-w-0"
-                          onClick={() => startEditing(g.id)}
-                          data-testid={`button-rename-${g.id}`}
-                          title="Click to rename"
-                        >
-                          <span className="text-xs font-semibold uppercase tracking-wider truncate" style={{ color: g.color }}>
-                            {groupNames[g.id]}
-                          </span>
-                          <Pencil
-                            className="w-3 h-3 shrink-0 opacity-0 group-hover/rename:opacity-60 transition-opacity"
-                            style={{ color: g.color }}
+                        {editingGroupId === g.id ? (
+                          <input
+                            ref={editInputRef}
+                            value={editDraft}
+                            onChange={(e) => setEditDraft(e.target.value)}
+                            onBlur={commitEdit}
+                            onKeyDown={handleEditKeyDown}
+                            className="text-xs font-semibold uppercase tracking-wider bg-transparent border-b outline-none flex-1 min-w-0"
+                            style={{ color: g.color, borderColor: g.color }}
+                            maxLength={24}
+                            data-testid={`input-rename-${g.id}`}
                           />
-                        </button>
-                      )}
-                    </div>
-                    {selectedImages.length > 0 && (
-                      <button
-                        onClick={() => clearGroup(g.id)}
-                        className="text-muted-foreground hover:text-destructive transition-colors shrink-0"
-                        data-testid={`button-clear-group-${g.id}`}
-                        aria-label={`Clear ${groupNames[g.id]}`}
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    )}
-                  </div>
-
-                  <AnimatePresence mode="popLayout">
-                    {selectedImages.length === 0 ? (
-                      <motion.p
-                        key="empty"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="text-xs text-muted-foreground/60 italic pl-4"
-                        data-testid={`text-empty-${g.id}`}
-                      >
-                        No images yet
-                      </motion.p>
-                    ) : (
-                      <ul className="space-y-0.5 pl-4">
-                        {selectedImages.map((img, i) => (
-                          <motion.li
-                            key={img.id}
-                            layout
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -8, transition: { duration: 0.15 } }}
-                            className="flex items-center gap-2 py-1 group"
-                            data-testid={`list-item-${g.id}-${img.id}`}
+                        ) : (
+                          <button
+                            className="flex items-center gap-1.5 group/rename min-w-0"
+                            onClick={() => startEditing(g.id)}
+                            data-testid={`button-rename-${g.id}`}
+                            title="Click to rename"
                           >
-                            <span className="text-[10px] font-mono text-muted-foreground/40 w-4 shrink-0">
-                              {String(i + 1).padStart(2, "0")}
+                            <span
+                              className="text-xs font-semibold uppercase tracking-wider truncate"
+                              style={{ color: g.color }}
+                            >
+                              {groupNames[g.id] ?? g.name}
                             </span>
-                            <span className="text-sm text-foreground font-medium flex-1 leading-tight">
-                              {img.title}
-                            </span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+                            <Pencil
+                              className="w-3 h-3 shrink-0 opacity-0 group-hover/rename:opacity-60 transition-opacity"
+                              style={{ color: g.color }}
+                            />
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        {selectedImages.length > 0 && (
+                          <button
+                            onClick={() => clearGroup(g.id)}
+                            className="text-muted-foreground hover:text-destructive transition-colors"
+                            data-testid={`button-clear-group-${g.id}`}
+                            aria-label={`Clear ${groupNames[g.id] ?? g.name}`}
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                        {groups.length > 1 && (
+                          <button
+                            onClick={() => deleteGroup(g.id)}
+                            className="text-muted-foreground/40 hover:text-destructive transition-colors"
+                            data-testid={`button-delete-group-${g.id}`}
+                            aria-label={`Delete ${groupNames[g.id] ?? g.name}`}
+                            title="Delete group"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    <AnimatePresence mode="popLayout">
+                      {selectedImages.length === 0 ? (
+                        <motion.p
+                          key="empty"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="text-xs text-muted-foreground/60 italic pl-4"
+                          data-testid={`text-empty-${g.id}`}
+                        >
+                          No images yet
+                        </motion.p>
+                      ) : (
+                        <ul className="space-y-0.5 pl-4">
+                          {selectedImages.map((img, i) => (
+                            <motion.li
+                              key={img.id}
+                              layout
+                              initial={{ opacity: 0, x: -8 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -8, transition: { duration: 0.15 } }}
+                              className="flex items-center gap-2 py-1"
+                              data-testid={`list-item-${g.id}-${img.id}`}
+                            >
+                              <span className="text-[10px] font-mono text-muted-foreground/40 w-4 shrink-0">
+                                {String(i + 1).padStart(2, "0")}
+                              </span>
+                              <span className="text-sm text-foreground font-medium flex-1 leading-tight">
+                                {img.title}
+                              </span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         </ScrollArea>
       </aside>
@@ -331,27 +385,35 @@ export default function Home() {
             data-testid="text-active-group-bar"
           >
             <Plus className="w-4 h-4 opacity-80" />
-            <span>Clicking images will add them to <strong>{activeGroupName}</strong></span>
+            <span>
+              Clicking images will add them to <strong>{activeGroupName}</strong>
+            </span>
           </div>
 
           {/* Category filter bar */}
           <div className="flex gap-2 mb-8 flex-wrap" data-testid="filter-bar">
             {CATEGORIES.map((cat) => {
               const isActive = filterCategory === cat;
-              const count = cat === "All" ? IMAGES.length : IMAGES.filter((img) => img.category === cat).length;
+              const count =
+                cat === "All"
+                  ? IMAGES.length
+                  : IMAGES.filter((img) => img.category === cat).length;
               return (
                 <button
                   key={cat}
                   onClick={() => setFilterCategory(cat)}
                   data-testid={`filter-${cat.toLowerCase()}`}
                   className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200
-                    ${isActive
-                      ? "bg-foreground text-background border-foreground"
-                      : "bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground"
+                    ${
+                      isActive
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground"
                     }`}
                 >
                   {cat}
-                  <span className={`ml-1.5 font-mono text-[10px] ${isActive ? "opacity-60" : "opacity-40"}`}>
+                  <span
+                    className={`ml-1.5 font-mono text-[10px] ${isActive ? "opacity-60" : "opacity-40"}`}
+                  >
                     {count}
                   </span>
                 </button>
@@ -373,7 +435,7 @@ export default function Home() {
           >
             {filteredImages.map((img) => {
               const imageGroups = getImageGroups(img.id);
-              const isInActiveGroup = selections[activeGroupId].has(img.id);
+              const isInActiveGroup = selections[activeGroupId]?.has(img.id) ?? false;
 
               return (
                 <motion.button
@@ -434,7 +496,7 @@ export default function Home() {
                       )}
                     </AnimatePresence>
 
-                    {/* Group membership dots (all groups) */}
+                    {/* Group membership dots */}
                     {imageGroups.length > 0 && (
                       <div className="absolute bottom-3 left-3 z-20 flex gap-1.5">
                         {imageGroups.map((g) => (
@@ -445,7 +507,7 @@ export default function Home() {
                             exit={{ scale: 0 }}
                             className="inline-block w-2.5 h-2.5 rounded-full shadow ring-2 ring-white/60"
                             style={{ backgroundColor: g.color }}
-                            title={g.name}
+                            title={groupNames[g.id] ?? g.name}
                           />
                         ))}
                       </div>
