@@ -84,6 +84,13 @@ export default function Home() {
   const activeGroup = GROUPS.find((g) => g.id === activeGroupId)!;
   const activeGroupName = groupNames[activeGroupId];
 
+  type Category = "All" | "Nature" | "Architecture" | "Food";
+  const CATEGORIES: Category[] = ["All", "Nature", "Architecture", "Food"];
+  const [filterCategory, setFilterCategory] = useState<Category>("All");
+  const filteredImages = filterCategory === "All"
+    ? IMAGES
+    : IMAGES.filter((img) => img.category === filterCategory);
+
   const startEditing = (groupId: string) => {
     setEditingGroupId(groupId);
     setEditDraft(groupNames[groupId]);
@@ -319,12 +326,37 @@ export default function Home() {
         <div className="p-6 md:p-10 lg:p-12 max-w-7xl mx-auto">
           {/* Active group indicator bar */}
           <div
-            className="mb-8 flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-semibold transition-colors duration-300"
+            className="mb-5 flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-semibold transition-colors duration-300"
             style={{ backgroundColor: activeGroup.color }}
             data-testid="text-active-group-bar"
           >
             <Plus className="w-4 h-4 opacity-80" />
             <span>Clicking images will add them to <strong>{activeGroupName}</strong></span>
+          </div>
+
+          {/* Category filter bar */}
+          <div className="flex gap-2 mb-8 flex-wrap" data-testid="filter-bar">
+            {CATEGORIES.map((cat) => {
+              const isActive = filterCategory === cat;
+              const count = cat === "All" ? IMAGES.length : IMAGES.filter((img) => img.category === cat).length;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setFilterCategory(cat)}
+                  data-testid={`filter-${cat.toLowerCase()}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200
+                    ${isActive
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground"
+                    }`}
+                >
+                  {cat}
+                  <span className={`ml-1.5 font-mono text-[10px] ${isActive ? "opacity-60" : "opacity-40"}`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           <motion.div
@@ -339,7 +371,7 @@ export default function Home() {
               },
             }}
           >
-            {IMAGES.map((img) => {
+            {filteredImages.map((img) => {
               const imageGroups = getImageGroups(img.id);
               const isInActiveGroup = selections[activeGroupId].has(img.id);
 
