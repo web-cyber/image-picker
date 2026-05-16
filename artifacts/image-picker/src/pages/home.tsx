@@ -153,9 +153,7 @@ export default function Home() {
       if (selected.length === 0) return;
       lines.push(name.toUpperCase());
       lines.push("─".repeat(name.length));
-      selected.forEach((img, i) => {
-        lines.push(`${String(i + 1).padStart(2, "0")}. ${img.title}`);
-      });
+      lines.push(selected.map((img) => img.title).join(", "));
       lines.push("");
     });
     if (lines.length === 0) return;
