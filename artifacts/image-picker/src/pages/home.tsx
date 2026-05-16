@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check, X, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -11,6 +11,46 @@ interface ImageData {
   category: "Nature" | "Architecture" | "Food";
   src: string;
 }
+
+interface Group {
+  id: string;
+  name: string;
+  color: string;
+  bgClass: string;
+  borderClass: string;
+  textClass: string;
+  badgeBg: string;
+}
+
+const GROUPS: Group[] = [
+  {
+    id: "g1",
+    name: "Group A",
+    color: "#2d6a4f",
+    bgClass: "bg-[#2d6a4f]",
+    borderClass: "border-[#2d6a4f]",
+    textClass: "text-[#2d6a4f]",
+    badgeBg: "bg-[#2d6a4f]",
+  },
+  {
+    id: "g2",
+    name: "Group B",
+    color: "#b5451b",
+    bgClass: "bg-[#b5451b]",
+    borderClass: "border-[#b5451b]",
+    textClass: "text-[#b5451b]",
+    badgeBg: "bg-[#b5451b]",
+  },
+  {
+    id: "g3",
+    name: "Group C",
+    color: "#4a3f8f",
+    bgClass: "bg-[#4a3f8f]",
+    borderClass: "border-[#4a3f8f]",
+    textClass: "text-[#4a3f8f]",
+    badgeBg: "bg-[#4a3f8f]",
+  },
+];
 
 const IMAGES: ImageData[] = [
   { id: "n1", title: "Mountain Sunrise", category: "Nature", src: "/images/nature-1.png" },
@@ -27,97 +67,182 @@ const IMAGES: ImageData[] = [
   { id: "f4", title: "Pour Over Coffee", category: "Food", src: "/images/food-4.jpg" },
 ];
 
-export default function Home() {
-  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+type SelectionState = Record<string, Set<string>>;
 
-  const toggleSelection = (id: string) => {
-    setSelectedIds((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
+const initialSelection = (): SelectionState =>
+  Object.fromEntries(GROUPS.map((g) => [g.id, new Set<string>()]));
+
+export default function Home() {
+  const [selections, setSelections] = useState<SelectionState>(initialSelection);
+  const [activeGroupId, setActiveGroupId] = useState<string>(GROUPS[0].id);
+
+  const activeGroup = GROUPS.find((g) => g.id === activeGroupId)!;
+
+  const toggleImage = (imageId: string) => {
+    setSelections((prev) => {
+      const groupSet = new Set(prev[activeGroupId]);
+      if (groupSet.has(imageId)) {
+        groupSet.delete(imageId);
       } else {
-        newSet.add(id);
+        groupSet.add(imageId);
       }
-      return newSet;
+      return { ...prev, [activeGroupId]: groupSet };
     });
   };
 
-  const clearAll = () => setSelectedIds(new Set());
+  const clearGroup = (groupId: string) => {
+    setSelections((prev) => ({ ...prev, [groupId]: new Set() }));
+  };
 
-  const selectedImages = IMAGES.filter((img) => selectedIds.has(img.id));
+  const clearAll = () => setSelections(initialSelection());
+
+  const getImageGroups = (imageId: string): Group[] =>
+    GROUPS.filter((g) => selections[g.id].has(imageId));
+
+  const totalSelected = GROUPS.reduce((sum, g) => sum + selections[g.id].size, 0);
 
   return (
     <div className="min-h-[100dvh] w-full bg-background flex flex-col md:flex-row overflow-hidden font-sans">
-      {/* Sidebar: Selection Output */}
+      {/* Sidebar */}
       <aside className="w-full md:w-80 lg:w-96 border-b md:border-b-0 md:border-r border-border bg-card flex flex-col z-10 shrink-0 shadow-sm md:shadow-none">
-        <div className="p-6 md:p-8 flex flex-col gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground" data-testid="text-title">Mood Board</h1>
-          <p className="text-sm text-muted-foreground">Select images to build your collection.</p>
+        <div className="p-6 md:p-8 flex flex-col gap-1">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground" data-testid="text-title">
+            Mood Board
+          </h1>
+          <p className="text-sm text-muted-foreground">Assign images to groups, then see each group's list.</p>
         </div>
 
         <Separator />
 
-        <div className="px-6 md:px-8 py-4 flex items-center justify-between">
-          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            {selectedIds.size} Selected
-          </span>
-          {selectedIds.size > 0 && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={clearAll}
-              className="h-8 px-2 text-xs text-muted-foreground hover:text-foreground"
-              data-testid="button-clear-all"
-            >
-              Clear all
-            </Button>
-          )}
+        {/* Active group switcher */}
+        <div className="px-6 md:px-8 pt-5 pb-3 flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              Active Group
+            </span>
+            {totalSelected > 0 && (
+              <button
+                onClick={clearAll}
+                className="text-xs text-muted-foreground hover:text-destructive transition-colors"
+                data-testid="button-clear-all"
+              >
+                Clear all
+              </button>
+            )}
+          </div>
+          <div className="flex gap-2">
+            {GROUPS.map((g) => {
+              const isActive = g.id === activeGroupId;
+              const count = selections[g.id].size;
+              return (
+                <button
+                  key={g.id}
+                  onClick={() => setActiveGroupId(g.id)}
+                  data-testid={`button-group-${g.id}`}
+                  className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold transition-all duration-200 border-2 flex flex-col items-center gap-0.5
+                    ${isActive
+                      ? `${g.borderClass} text-white`
+                      : "border-transparent bg-muted/60 text-muted-foreground hover:bg-muted"
+                    }`}
+                  style={isActive ? { backgroundColor: g.color } : {}}
+                >
+                  <span>{g.name}</span>
+                  <span className={`font-mono text-[10px] ${isActive ? "opacity-80" : ""}`}>
+                    {count} item{count !== 1 ? "s" : ""}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        <ScrollArea className="flex-1 px-6 md:px-8 pb-8">
-          <AnimatePresence mode="popLayout">
-            {selectedImages.length === 0 ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="py-12 text-center"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-muted/50 text-muted-foreground mb-4">
-                  <span className="text-xl font-serif italic">?</span>
+        <Separator />
+
+        {/* Per-group selection output */}
+        <ScrollArea className="flex-1 pb-8">
+          <div className="px-6 md:px-8 pt-4 flex flex-col gap-6">
+            {GROUPS.map((g) => {
+              const selectedImages = IMAGES.filter((img) => selections[g.id].has(img.id));
+              return (
+                <div key={g.id} data-testid={`section-group-${g.id}`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                        style={{ backgroundColor: g.color }}
+                      />
+                      <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: g.color }}>
+                        {g.name}
+                      </span>
+                    </div>
+                    {selectedImages.length > 0 && (
+                      <button
+                        onClick={() => clearGroup(g.id)}
+                        className="text-muted-foreground hover:text-destructive transition-colors"
+                        data-testid={`button-clear-group-${g.id}`}
+                        aria-label={`Clear ${g.name}`}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+
+                  <AnimatePresence mode="popLayout">
+                    {selectedImages.length === 0 ? (
+                      <motion.p
+                        key="empty"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="text-xs text-muted-foreground/60 italic pl-4"
+                        data-testid={`text-empty-${g.id}`}
+                      >
+                        No images yet
+                      </motion.p>
+                    ) : (
+                      <ul className="space-y-0.5 pl-4">
+                        {selectedImages.map((img, i) => (
+                          <motion.li
+                            key={img.id}
+                            layout
+                            initial={{ opacity: 0, x: -8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -8, transition: { duration: 0.15 } }}
+                            className="flex items-center gap-2 py-1 group"
+                            data-testid={`list-item-${g.id}-${img.id}`}
+                          >
+                            <span className="text-[10px] font-mono text-muted-foreground/40 w-4 shrink-0">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span className="text-sm text-foreground font-medium flex-1 leading-tight">
+                              {img.title}
+                            </span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    )}
+                  </AnimatePresence>
                 </div>
-                <p className="text-sm text-muted-foreground" data-testid="text-empty-state">No images selected yet.</p>
-              </motion.div>
-            ) : (
-              <ul className="space-y-1 font-mono text-sm">
-                {selectedImages.map((img, i) => (
-                  <motion.li
-                    key={img.id}
-                    layout
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10, transition: { duration: 0.2 } }}
-                    className="flex items-start py-2 group cursor-pointer"
-                    onClick={() => toggleSelection(img.id)}
-                    data-testid={`list-item-${img.id}`}
-                  >
-                    <span className="text-muted-foreground/50 w-6 shrink-0 mt-0.5 select-none">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="flex-1 text-foreground font-medium group-hover:line-through decoration-muted-foreground/40 transition-all">{img.title}</span>
-                    <button className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity" data-testid={`button-remove-${img.id}`}>
-                      <X className="w-4 h-4" />
-                    </button>
-                  </motion.li>
-                ))}
-              </ul>
-            )}
-          </AnimatePresence>
+              );
+            })}
+          </div>
         </ScrollArea>
       </aside>
 
-      {/* Main Content: Image Grid */}
+      {/* Main image grid */}
       <main className="flex-1 h-full overflow-y-auto bg-background/50">
         <div className="p-6 md:p-10 lg:p-12 max-w-7xl mx-auto">
-          <motion.div 
+          {/* Active group indicator bar */}
+          <div
+            className="mb-8 flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-semibold transition-colors duration-300"
+            style={{ backgroundColor: activeGroup.color }}
+            data-testid="text-active-group-bar"
+          >
+            <Plus className="w-4 h-4 opacity-80" />
+            <span>Clicking images will add them to <strong>{activeGroup.name}</strong></span>
+          </div>
+
+          <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
             initial="hidden"
             animate="show"
@@ -125,58 +250,97 @@ export default function Home() {
               hidden: { opacity: 0 },
               show: {
                 opacity: 1,
-                transition: { staggerChildren: 0.05 }
-              }
+                transition: { staggerChildren: 0.05 },
+              },
             }}
           >
             {IMAGES.map((img) => {
-              const isSelected = selectedIds.has(img.id);
+              const imageGroups = getImageGroups(img.id);
+              const isInActiveGroup = selections[activeGroupId].has(img.id);
+
               return (
                 <motion.button
                   key={img.id}
-                  onClick={() => toggleSelection(img.id)}
+                  onClick={() => toggleImage(img.id)}
                   className="group relative flex flex-col text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-xl rounded-b-none"
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+                    show: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { type: "spring", stiffness: 300, damping: 24 },
+                    },
                   }}
                   data-testid={`card-image-${img.id}`}
-                  aria-pressed={isSelected}
+                  aria-pressed={isInActiveGroup}
                 >
                   <div className="relative w-full aspect-square overflow-hidden rounded-xl bg-muted shadow-sm transition-all duration-300 ease-out">
-                    {/* Image */}
                     <img
                       src={img.src}
                       alt={img.title}
-                      className={`w-full h-full object-cover transition-transform duration-500 ${isSelected ? "scale-105" : "group-hover:scale-105"}`}
+                      className={`w-full h-full object-cover transition-transform duration-500 ${
+                        isInActiveGroup ? "scale-105" : "group-hover:scale-105"
+                      }`}
                       loading="lazy"
                     />
-                    
-                    {/* Dark Overlay when not selected, to make the checkmark pop on selection, or vice versa? Let's do a white semi-transparent overlay when selected for a "dimmed out / picked" look, or a subtle dark gradient. */}
-                    <div className={`absolute inset-0 transition-colors duration-300 ${isSelected ? "bg-primary/20" : "bg-black/0 group-hover:bg-black/5"}`} />
 
-                    {/* Border highlight */}
-                    <div className={`absolute inset-0 border-4 rounded-xl transition-colors duration-300 z-10 ${isSelected ? "border-primary" : "border-transparent"}`} />
-                    
-                    {/* Checkmark Badge */}
+                    {/* Active-group tint overlay */}
+                    <div
+                      className="absolute inset-0 transition-opacity duration-300"
+                      style={{
+                        backgroundColor: activeGroup.color,
+                        opacity: isInActiveGroup ? 0.18 : 0,
+                      }}
+                    />
+
+                    {/* Active-group border */}
+                    <div
+                      className={`absolute inset-0 border-4 rounded-xl transition-all duration-300 z-10 ${
+                        isInActiveGroup ? "opacity-100" : "opacity-0 group-hover:opacity-40"
+                      }`}
+                      style={{ borderColor: activeGroup.color }}
+                    />
+
+                    {/* Checkmark for active group */}
                     <AnimatePresence>
-                      {isSelected && (
+                      {isInActiveGroup && (
                         <motion.div
                           initial={{ scale: 0, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           exit={{ scale: 0, opacity: 0 }}
                           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                          className="absolute top-4 right-4 z-20 bg-primary text-primary-foreground p-1.5 rounded-full shadow-md"
+                          className="absolute top-3 right-3 z-20 text-white p-1.5 rounded-full shadow-md"
+                          style={{ backgroundColor: activeGroup.color }}
                         >
-                          <Check className="w-5 h-5" strokeWidth={3} />
+                          <Check className="w-4 h-4" strokeWidth={3} />
                         </motion.div>
                       )}
                     </AnimatePresence>
+
+                    {/* Group membership dots (all groups) */}
+                    {imageGroups.length > 0 && (
+                      <div className="absolute bottom-3 left-3 z-20 flex gap-1.5">
+                        {imageGroups.map((g) => (
+                          <motion.span
+                            key={g.id}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0 }}
+                            className="inline-block w-2.5 h-2.5 rounded-full shadow ring-2 ring-white/60"
+                            style={{ backgroundColor: g.color }}
+                            title={g.name}
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  
-                  {/* Title & Category below */}
+
+                  {/* Title & category */}
                   <div className="mt-3 flex flex-col">
-                    <span className={`text-sm font-semibold transition-colors duration-300 ${isSelected ? "text-primary" : "text-foreground"}`}>
+                    <span
+                      className="text-sm font-semibold transition-colors duration-300"
+                      style={{ color: isInActiveGroup ? activeGroup.color : undefined }}
+                    >
                       {img.title}
                     </span>
                     <span className="text-xs text-muted-foreground font-mono tracking-wide mt-0.5">
