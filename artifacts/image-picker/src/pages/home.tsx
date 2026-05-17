@@ -6,6 +6,13 @@ import { Separator } from "@/components/ui/separator";
 import animalExtract from "@assets/Animal_extract_1778984933920.jpeg";
 import busyBuddyTwistNTreat from "@assets/Busy_Buddy_Twist-N-Treat_1778989737835.jpeg";
 import siliconeSlowFeeder from "@assets/Silicone_slow_feeder_1778989887637.jpeg";
+import basket from "@assets/Basket_1778990275511.jpeg";
+import ladder from "@assets/Ladder_1778990275511.jpeg";
+import latchboard from "@assets/Latchboard_1778990275512.jpeg";
+import nestBox from "@assets/Nest_Box_1778990275512.jpeg";
+import paintbrush from "@assets/Paintbrush_1778990275512.jpeg";
+import perch from "@assets/Perch_1778990275512.jpeg";
+import xylophone from "@assets/Xylophone_1778990275512.webp";
 import kong from "@assets/Kong_1778989737835.webp";
 import questForagerFlower from "@assets/Quest_forager_flower_1778989737835.jpg";
 import rubberWaterTub from "@assets/Rubber_Water_Tub_1778989737835.avif";
@@ -77,6 +84,13 @@ const IMAGE_SRCS: Record<string, string> = {
   "Quest forager flower": questForagerFlower,
   "Rubber Water Tub": rubberWaterTub,
   "Silicone slow feeder": siliconeSlowFeeder,
+  "Basket": basket,
+  "Ladder": ladder,
+  "Latchboard": latchboard,
+  "Nest Box": nestBox,
+  "Paintbrush": paintbrush,
+  "Perch": perch,
+  "Xylophone": xylophone,
   "Hol-ee Roller": holeeRoller,
   "Jolly Pets Tug-n-Toss": jollyPetsTugNToss,
   "Otto Pinecone Forager": ottoPineconeForager,
