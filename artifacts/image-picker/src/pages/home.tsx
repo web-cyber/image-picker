@@ -4,6 +4,10 @@ import { Check, Plus, Trash2, Pencil, Download, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import animalExtract from "@assets/Animal_extract_1778984933920.jpeg";
+import holeeRoller from "@assets/Hol-ee_Roller_1778989238168.jpeg";
+import jollyPetsTugNToss from "@assets/Jolly_Pets_Tug-n-Toss_1778989238169.webp";
+import ottoPineconeForager from "@assets/Otto_Pinecone_Forager_1778989238169.jpeg";
+import tireBiterWithChain from "@assets/TireBiter_with_Chain_1778989238169.jpeg";
 import foam from "@assets/Foam_1778988988126.jpeg";
 import plasticEgg from "@assets/Plastic_egg_1778988988127.jpeg";
 import cardboard from "@assets/Cardboard_1778988783970.jpeg";
@@ -63,6 +67,10 @@ import stuffedAnimal from "@assets/Stuffed_animal_1778978075048.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal extract": animalExtract,
+  "Hol-ee Roller": holeeRoller,
+  "Jolly Pets Tug-n-Toss": jollyPetsTugNToss,
+  "Otto Pinecone Forager": ottoPineconeForager,
+  "TireBiter with Chain": tireBiterWithChain,
   "Foam": foam,
   "Plastic egg": plasticEgg,
   "Cardboard": cardboard,
