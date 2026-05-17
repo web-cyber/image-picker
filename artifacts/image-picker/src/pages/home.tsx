@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, Plus, Trash2, Pencil, Download, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import burlap from "@assets/Burlap_1778980494279.jpeg";
+import elevatedDogBed from "@assets/Elevated_Dog_Bed_1778980494279.webp";
+import firehose from "@assets/Firehose_1778980494279.jpeg";
+import gorillaBusterBungee from "@assets/Gorilla_Buster_Bungee_1778980494280.jpeg";
+import hammock from "@assets/Hammock_1778980494280.jpeg";
+import nibblenet from "@assets/Nibblenet_1778980494280.webp";
 import cottonPyramidSwing from "@assets/Cotton_pyramid_swing_1778978075047.webp";
 import cottonRopeBoing from "@assets/Cotton_rope_boing_toy_1778978075047.webp";
 import fabricHammock from "@assets/Fabric_hammock_1778978075047.jpeg";
@@ -13,6 +19,12 @@ import ropeImg from "@assets/Rope_1778978075048.jpeg";
 import stuffedAnimal from "@assets/Stuffed_animal_1778978075048.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
+  "Burlap": burlap,
+  "Elevated Dog Bed": elevatedDogBed,
+  "Firehose": firehose,
+  "Gorilla Buster Bungee": gorillaBusterBungee,
+  "Hammock": hammock,
+  "Nibblenet": nibblenet,
   "Cotton pyramid swing": cottonPyramidSwing,
   "Cotton rope boing toy": cottonRopeBoing,
   "Fabric hammock": fabricHammock,
