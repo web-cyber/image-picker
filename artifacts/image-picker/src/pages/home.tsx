@@ -60,7 +60,7 @@ function makeItems(category: string, names: string[]): ImageData[] {
 const IMAGES: ImageData[] = [
   ...makeItems("Fabric", [
     "Cotton pyramid swing", "Cotton rope boing toy", "Fabric tunnel", "Fabric hammock",
-    "Stuffed animal", "Gibbon Swing", "Jolly Pets Romp-N-Roll",
+    "Stuffed animal", "Gibbon Swing", "Jolly Pets Romp-N-Roll", "Rope",
   ]),
   ...makeItems("Rope", []),
   ...makeItems("Strong Fabric", [
