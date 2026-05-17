@@ -4,6 +4,14 @@ import { Check, Plus, Trash2, Pencil, Download, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import asapMirror from "@assets/ASAP_Mirror_1778982473519.jpeg";
+import bubbleBlower from "@assets/Bubble_blower_1778984271023.jpeg";
+import bubbles from "@assets/Bubbles_1778984271023.webp";
+import chalk from "@assets/Chalk_1778984271023.jpeg";
+import laserProjector from "@assets/Laser_projector_1778984271023.avif";
+import oilScent from "@assets/Oil_scent_1778984271024.webp";
+import paint from "@assets/Paint_1778984271024.jpeg";
+import perfume from "@assets/Perfume_1778984271024.webp";
+import radio from "@assets/Radio_1778984271024.jpeg";
 import babyToy from "@assets/Baby_toy_1778981977996.jpeg";
 import bell from "@assets/Bell_1778982473519.jpeg";
 import bingoBall from "@assets/Bingo_Ball_1778982473519.png";
@@ -36,6 +44,14 @@ import stuffedAnimal from "@assets/Stuffed_animal_1778978075048.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "ASAP Mirror": asapMirror,
+  "Bubble blower": bubbleBlower,
+  "Bubbles": bubbles,
+  "Chalk": chalk,
+  "Laser projector": laserProjector,
+  "Oil scent": oilScent,
+  "Paint": paint,
+  "Perfume": perfume,
+  "Radio": radio,
   "Baby toy": babyToy,
   "Bell": bell,
   "Bingo Ball": bingoBall,
