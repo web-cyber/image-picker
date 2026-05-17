@@ -65,7 +65,7 @@ const IMAGES: ImageData[] = [
     "Stuffed animal", "Gibbon Swing", "Jolly Pets Romp-N-Roll",
   ]),
   ...makeItems("Strong Fabric", [
-    "Hammock", "Nibblenet", "Gorilla Buster Bungee", "Elevated Dog Bed", "Firehose",
+    "Hammock", "Nibblenet", "Gorilla Buster Bungee", "Elevated Dog Bed", "Firehose", "Burlap",
   ]),
   ...makeItems("Burlap", []),
   ...makeItems("Soft Fabric", [
