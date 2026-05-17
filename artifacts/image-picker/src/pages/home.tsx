@@ -3,7 +3,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, Plus, Trash2, Pencil, Download, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import asapMirror from "@assets/ASAP_Mirror_1778982473519.jpeg";
 import babyToy from "@assets/Baby_toy_1778981977996.jpeg";
+import bell from "@assets/Bell_1778982473519.jpeg";
+import bingoBall from "@assets/Bingo_Ball_1778982473519.png";
+import caitecBaffleCage from "@assets/Caitec_Baffle_Cage_1778982473519.jpeg";
+import caitecKabob from "@assets/Caitec_Stainless_Steel_Kabob_1778982473520.jpeg";
+import greensFeeder from "@assets/Greens_Feeder_1778982473520.jpeg";
+import key from "@assets/Key_1778982473520.jpeg";
+import reflectiveSensoryBalls from "@assets/Reflective_Sensory_Balls_1778982473520.webp";
+import spool from "@assets/Spool_1778982473520.jpeg";
+import ssForagingTray from "@assets/Stainless_Steel_Foraging_Tray_1778982473521.jpeg";
+import ssPrimateSpinner from "@assets/Stainless_Steel_Primate_Spinner_1778982473521.png";
+import ssRoundRattle from "@assets/Stainless_Steel_Round_Rattle_1778982473521.jpeg";
+import suetCage from "@assets/Suet_cage_bird_feeder_1778982473521.webp";
+import treeFeeder from "@assets/Tree_Feeder_1778982473521.jpeg";
+import windSpinner from "@assets/Wind_Spinner_1778982473521.jpeg";
 import burlap from "@assets/Burlap_1778980494279.jpeg";
 import elevatedDogBed from "@assets/Elevated_Dog_Bed_1778980494279.webp";
 import firehose from "@assets/Firehose_1778980494279.jpeg";
@@ -20,7 +35,22 @@ import ropeImg from "@assets/Rope_1778978075048.jpeg";
 import stuffedAnimal from "@assets/Stuffed_animal_1778978075048.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
+  "ASAP Mirror": asapMirror,
   "Baby toy": babyToy,
+  "Bell": bell,
+  "Bingo Ball": bingoBall,
+  "Caitec Baffle Cage": caitecBaffleCage,
+  "Caitec Stainless Steel Kabob": caitecKabob,
+  "Greens Feeder": greensFeeder,
+  "Key": key,
+  "Reflective Sensory Balls": reflectiveSensoryBalls,
+  "Spool": spool,
+  "Stainless Steel Foraging Tray": ssForagingTray,
+  "Stainless Steel Primate Spinner": ssPrimateSpinner,
+  "Stainless Steel Round Rattle": ssRoundRattle,
+  "Suet cage bird feeder": suetCage,
+  "Tree Feeder": treeFeeder,
+  "Wind Spinner": windSpinner,
   "Burlap": burlap,
   "Elevated Dog Bed": elevatedDogBed,
   "Firehose": firehose,
