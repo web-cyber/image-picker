@@ -6,6 +6,20 @@ import { Separator } from "@/components/ui/separator";
 import animalExtract from "@assets/Animal_extract_1778984933920.jpeg";
 import busyBuddyTwistNTreat from "@assets/Busy_Buddy_Twist-N-Treat_1778989737835.jpeg";
 import siliconeSlowFeeder from "@assets/Silicone_slow_feeder_1778989887637.jpeg";
+import animalDecoys from "@assets/Animal_Decoys_1778991292294.jpeg";
+import astroTube from "@assets/Astro_Tube_1778991292294.png";
+import astroturf from "@assets/Astroturf_1778991292294.jpg";
+import birdFeeder from "@assets/Bird_feeder_1778991292294.webp";
+import crate from "@assets/Crate_1778991292295.webp";
+import featherlandParadise from "@assets/Featherland_Paradise_Push_and_Pull_1778991292295.webp";
+import foragingCups from "@assets/Foraging_cups_1778991292295.jpeg";
+import foragingWheelBirdToy from "@assets/Foraging_Wheel_Bird_Toy_1778991292297.jpeg";
+import grassDryingRack from "@assets/Grass_Drying_Rack_1778991292300.webp";
+import hayballEnrichmentFeeder from "@assets/Hayball_Enrichment_Feeder_1778991292302.webp";
+import heartToTailPetFeeder from "@assets/Heart_to_Tail_Pet_Feeder_1778991292302.jpeg";
+import kiddiePool from "@assets/Kiddie_pool_1778991292302.webp";
+import lawnSprinkler from "@assets/Lawn_sprinkler_1778991292303.webp";
+import lickinLayersDogPuzzle from "@assets/Lickin'_layers_dog_puzzle_1778991292303.webp";
 import basket from "@assets/Basket_1778990275511.jpeg";
 import ladder from "@assets/Ladder_1778990275511.jpeg";
 import latchboard from "@assets/Latchboard_1778990275512.jpeg";
@@ -84,6 +98,20 @@ const IMAGE_SRCS: Record<string, string> = {
   "Quest forager flower": questForagerFlower,
   "Rubber Water Tub": rubberWaterTub,
   "Silicone slow feeder": siliconeSlowFeeder,
+  "Animal Decoys": animalDecoys,
+  "Astro Tube": astroTube,
+  "Astroturf": astroturf,
+  "Bird feeder": birdFeeder,
+  "Crate": crate,
+  "Featherland Paradise Push and Pull": featherlandParadise,
+  "Foraging cups": foragingCups,
+  "Foraging Wheel Bird Toy": foragingWheelBirdToy,
+  "Grass Drying Rack": grassDryingRack,
+  "Hayball Enrichment Feeder": hayballEnrichmentFeeder,
+  "Heart to Tail Pet Feeder": heartToTailPetFeeder,
+  "Kiddie pool": kiddiePool,
+  "Lawn sprinkler": lawnSprinkler,
+  "Lickin' layers dog puzzle": lickinLayersDogPuzzle,
   "Basket": basket,
   "Ladder": ladder,
   "Latchboard": latchboard,
