@@ -138,6 +138,12 @@ import slide from "@assets/Slide_1779082760893.jpeg";
 import slowFeeder from "@assets/Slow_feeder_1779082760893.jpeg";
 import snackShack from "@assets/Snack_Shack_1779082760893.jpeg";
 import target from "@assets/Target_1779082760894.png";
+import testTubeRack from "@assets/Test_tube_rack_1779082836358.jpeg";
+import trough from "@assets/Trough_1779082836358.jpeg";
+import waterJug from "@assets/Water_jug_1779082836359.jpeg";
+import waterPan from "@assets/Water_pan_1779082836359.jpeg";
+import wobbleBall from "@assets/Wobble_Ball_1779082836359.jpeg";
+import zooHangingFoodBall from "@assets/Zoo_Hanging_Food_Ball_1779082836359.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal extract": animalExtract,
@@ -274,6 +280,12 @@ const IMAGE_SRCS: Record<string, string> = {
   "Slow feeder": slowFeeder,
   "Snack Shack": snackShack,
   "Target": target,
+  "Test tube rack": testTubeRack,
+  "Trough": trough,
+  "Water jug": waterJug,
+  "Water pan": waterPan,
+  "Wobble Ball": wobbleBall,
+  "Zoo Hanging Food Ball": zooHangingFoodBall,
 };
 
 interface ImageData {
