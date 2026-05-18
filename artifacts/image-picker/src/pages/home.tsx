@@ -19,7 +19,7 @@ import hayballEnrichmentFeeder from "@assets/Hayball_Enrichment_Feeder_177899129
 import heartToTailPetFeeder from "@assets/Heart_to_Tail_Pet_Feeder_1778991292302.jpeg";
 import kiddiePool from "@assets/Kiddie_pool_1778991292302.webp";
 import lawnSprinkler from "@assets/Lawn_sprinkler_1778991292303.webp";
-import lickinLayersDogPuzzle from "@assets/Lickin'_layers_dog_puzzle_1778991292303.webp";
+import lickinLayersDogPuzzle from "@assets/Lickin'_layers_dog_puzzle_1779078451695.webp";
 import basket from "@assets/Basket_1778990275511.jpeg";
 import ladder from "@assets/Ladder_1778990275511.jpeg";
 import latchboard from "@assets/Latchboard_1778990275512.jpeg";
