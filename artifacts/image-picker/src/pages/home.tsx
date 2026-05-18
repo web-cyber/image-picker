@@ -118,6 +118,26 @@ import holeyMoley from "@assets/Holey_Moley_1779082606098.jpeg";
 import honeycomb from "@assets/Honeycomb_1779082606098.jpg";
 import jollyPetsTeaserBall from "@assets/Jolly_Pets_Teaser_Ball_1779082606098.jpeg";
 import kongWobblers from "@assets/Kong_Wobblers_1779082606098.jpeg";
+import likitSnakABall from "@assets/Likit_Snak_A_Ball_1779082760889.jpeg";
+import milkcrate from "@assets/Milkcrate_1779082760889.jpeg";
+import miniPlasticFeeder from "@assets/Mini_plastic_feeder_1779082760889.jpeg";
+import naturalisticLogFeeder from "@assets/Naturalistic_Log_Feeder_1779082760889.jpeg";
+import plasticTub from "@assets/Plastic_Tub_1779082760890.jpeg";
+import plasticTunnel from "@assets/Plastic_Tunnel_1779082760890.jpeg";
+import primaForager from "@assets/Prima-forager_1779082760890.jpeg";
+import primateForagingUnit1 from "@assets/primate_foraging_unit_1_1779082760890.jpeg";
+import primateForagingUnit2 from "@assets/primate_foraging_unit_2_1779082760891.jpeg";
+import puzzleFeeder from "@assets/Puzzle_feeder_1779082760892.jpeg";
+import pvc from "@assets/PVC_1779082760892.jpeg";
+import rockyLouFeeder from "@assets/Rocky_Lou_Feeder_1779082760892.jpeg";
+import saurusEgg from "@assets/Saurus_Egg_1779082760892.jpeg";
+import scentBall from "@assets/Scent_Ball_1779082760893.jpeg";
+import shakeATreat from "@assets/Shake-A-Treat_1779082760893.jpeg";
+import shroomRoom from "@assets/Shroom_Room_1779082760893.jpeg";
+import slide from "@assets/Slide_1779082760893.jpeg";
+import slowFeeder from "@assets/Slow_feeder_1779082760893.jpeg";
+import snackShack from "@assets/Snack_Shack_1779082760893.jpeg";
+import target from "@assets/Target_1779082760894.png";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal extract": animalExtract,
@@ -234,6 +254,26 @@ const IMAGE_SRCS: Record<string, string> = {
   "Honeycomb": honeycomb,
   "Jolly Pets Teaser Ball": jollyPetsTeaserBall,
   "Kong Wobblers": kongWobblers,
+  "Likit Snak A Ball": likitSnakABall,
+  "Milkcrate": milkcrate,
+  "Mini plastic feeder": miniPlasticFeeder,
+  "Naturalistic Log Feeder": naturalisticLogFeeder,
+  "Plastic Tub": plasticTub,
+  "Plastic Tunnel": plasticTunnel,
+  "Prima-forager": primaForager,
+  "Primate foraging unit 1": primateForagingUnit1,
+  "Primate foraging unit 2": primateForagingUnit2,
+  "Puzzle feeder": puzzleFeeder,
+  "PVC": pvc,
+  "Rocky Lou Feeder": rockyLouFeeder,
+  "Saurus Egg": saurusEgg,
+  "Scent Ball": scentBall,
+  "Shake-A-Treat": shakeATreat,
+  "Shroom Room": shroomRoom,
+  "Slide": slide,
+  "Slow feeder": slowFeeder,
+  "Snack Shack": snackShack,
+  "Target": target,
 };
 
 interface ImageData {
