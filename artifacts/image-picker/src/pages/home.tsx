@@ -19,6 +19,13 @@ import hayballEnrichmentFeeder from "@assets/Hayball_Enrichment_Feeder_177899129
 import heartToTailPetFeeder from "@assets/Heart_to_Tail_Pet_Feeder_1778991292302.jpeg";
 import kiddiePool from "@assets/Kiddie_pool_1778991292302.webp";
 import lawnSprinkler from "@assets/Lawn_sprinkler_1778991292303.webp";
+import lixit from "@assets/Lixit_1779079040764.jpeg";
+import noSpillKennelCup from "@assets/No_spill_kennel_cup_1779079040765.jpeg";
+import petGravityWaterer from "@assets/Pet_Gravity_Waterer_1779079040765.webp";
+import plasticBirdToy from "@assets/Plastic_bird_toy_1779079040765.jpeg";
+import postScratcher from "@assets/Post_Scratcher_1779079040765.webp";
+import tableTopStand from "@assets/Table_top_stand_1779079040765.jpeg";
+import trixieTurnAround from "@assets/Trixie_turn_around_1779079040765.webp";
 
 import basket from "@assets/Basket_1778990275511.jpeg";
 import ladder from "@assets/Ladder_1778990275511.jpeg";
@@ -111,6 +118,13 @@ const IMAGE_SRCS: Record<string, string> = {
   "Heart to Tail Pet Feeder": heartToTailPetFeeder,
   "Kiddie pool": kiddiePool,
   "Lawn sprinkler": lawnSprinkler,
+  "Lixit": lixit,
+  "No spill kennel cup": noSpillKennelCup,
+  "Pet Gravity Waterer": petGravityWaterer,
+  "Plastic bird toy": plasticBirdToy,
+  "Post Scratcher": postScratcher,
+  "Table top stand": tableTopStand,
+  "Trixie turn around": trixieTurnAround,
   "Basket": basket,
   "Ladder": ladder,
   "Latchboard": latchboard,
