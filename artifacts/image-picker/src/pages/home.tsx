@@ -26,6 +26,7 @@ import plasticBirdToy from "@assets/Plastic_bird_toy_1779079040765.jpeg";
 import postScratcher from "@assets/Post_Scratcher_1779079040765.webp";
 import tableTopStand from "@assets/Table_top_stand_1779079040765.jpeg";
 import trixieTurnAround from "@assets/Trixie_turn_around_1779079040765.webp";
+import lickinLayersDogPuzzle from "@assets/Lickin_layers_dog_puzzle_1779079543109.webp";
 
 import basket from "@assets/Basket_1778990275511.jpeg";
 import ladder from "@assets/Ladder_1778990275511.jpeg";
@@ -125,6 +126,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Post Scratcher": postScratcher,
   "Table top stand": tableTopStand,
   "Trixie turn around": trixieTurnAround,
+  "Lickin layers dog puzzle": lickinLayersDogPuzzle,
   "Basket": basket,
   "Ladder": ladder,
   "Latchboard": latchboard,
@@ -282,7 +284,7 @@ const IMAGES: ImageData[] = [
     "Foraging Wheel Bird Toy", "Grass Drying Rack", "Hayball Enrichment Feeder",
     "Heart to Tail Pet Feeder", "Kiddie pool", "Lixit",
     "No spill kennel cup", "Pet Gravity Waterer", "Plastic bird toy", "Post Scratcher",
-    "Table top stand", "Trixie turn around", "Crate", "Lawn sprinkler", "Animal Decoys", "Astro Tube",
+    "Table top stand", "Trixie turn around", "Crate", "Lawn sprinkler", "Animal Decoys", "Astro Tube", "Lickin layers dog puzzle",
   ]),
   ...makeItems("Hard Plastic", [
     "Animal Cap Feeder", "Collapsible Ladder", "4 Tube Feeder", "Amazing Graze",
