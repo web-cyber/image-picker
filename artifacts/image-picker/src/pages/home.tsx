@@ -292,7 +292,7 @@ const IMAGES: ImageData[] = [
     "Catch Interactive Feeder", "Crumble Disk Holder", "Foraging Ball", "Foraging Feeder",
     "Hanging Foraging Ball", "Hanging Snack Ball", "Hay Play Feeder", "Holey Moley",
     "Honeycomb", "Jolly Pets Teaser Ball", "Kong Wobblers", "Likit Snak A Ball",
-    "Milkcrate", "Mini plastic feeder", "Naturalistic Log Feeder", "Otto Bullet Feeder",
+    "Milkcrate", "Mini plastic feeder", "Naturalistic Log Feeder",
     "Plastic Tub", "Plastic Tunnel", "Prima-forager", "Primate foraging unit",
     "Puzzle feeder", "PVC", "Rocky Lou Feeder", "Saurus Egg", "Scent Ball",
     "Shake-A-Treat", "Shroom Room", "Slide", "Slow feeder", "Snack Shack",
