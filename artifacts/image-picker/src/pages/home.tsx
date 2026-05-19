@@ -347,12 +347,12 @@ function makeItems(category: string, names: string[]): ImageData[] {
 
 const IMAGES: ImageData[] = [
   ...makeItems("Fabric", [
-    "Cotton pyramid swing", "Cotton rope boing toy", "Fabric tunnel", "Fabric hammock",
-    "Stuffed animal", "Gibbon Swing", "Jolly Pets Romp-N-Roll", "Rope",
+    "Cotton pyramid swing", "Cotton rope boing toy", "Fabric hammock", "Fabric tunnel",
+    "Gibbon Swing", "Jolly Pets Romp-N-Roll", "Rope", "Stuffed animal",
   ]),
   ...makeItems("Rope", []),
   ...makeItems("Strong Fabric", [
-    "Hammock", "Nibblenet", "Gorilla Buster Bungee", "Elevated Dog Bed", "Firehose", "Burlap",
+    "Burlap", "Elevated Dog Bed", "Firehose", "Gorilla Buster Bungee", "Hammock", "Nibblenet",
   ]),
   ...makeItems("Burlap", []),
   ...makeItems("Soft Fabric", [
@@ -360,43 +360,45 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Metal", [
     "ASAP Mirror", "Bell", "Bingo Ball", "Caitec Baffle Cage", "Caitec Stainless Steel Kabob",
-    "Greens Feeder", "Key", "Reflective Sensory Balls", "Stainless Steel Foraging Tray",
+    "Greens Feeder", "Key", "Reflective Sensory Balls", "Spool", "Stainless Steel Foraging Tray",
     "Stainless Steel Primate Spinner", "Stainless Steel Round Rattle", "Suet cage bird feeder",
-    "Spool", "Tree Feeder", "Wind Spinner",
+    "Tree Feeder", "Wind Spinner",
   ]),
   ...makeItems("Miscellaneous", [
-    "Oil scent", "Perfume", "Laser projector", "Radio", "Bubble blower",
-    "Paint", "Bubbles", "Chalk",
+    "Bubble blower", "Bubbles", "Chalk", "Laser projector", "Oil scent",
+    "Paint", "Perfume", "Radio",
   ]),
   ...makeItems("Natural Material", [
-    "Seasoning", "Feather", "Fur", "Stone", "Browse", "Coconut husk",
-    "Fine pine", "Mulch", "Orchard grass", "Straw", "Sand", "Animal extract", "Bamboo",
+    "Animal extract", "Bamboo", "Browse", "Coconut husk", "Feather",
+    "Fine pine", "Fur", "Mulch", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw",
   ]),
   ...makeItems("Paper", [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
   ]),
   ...makeItems("Plastic", [
-    "Foraging cups", "Astroturf", "Bird feeder", "Featherland Paradise Push and Pull",
-    "Foraging Wheel Bird Toy", "Grass Drying Rack", "Hayball Enrichment Feeder",
-    "Heart to Tail Pet Feeder", "Kiddie pool", "Lixit",
+    "Animal Decoys", "Astro Tube", "Astroturf", "Bird feeder", "Crate",
+    "Featherland Paradise Push and Pull", "Foraging cups", "Foraging Wheel Bird Toy",
+    "Grass Drying Rack", "Hayball Enrichment Feeder", "Heart to Tail Pet Feeder",
+    "Kiddie pool", "Lawn sprinkler", "Lickin layers dog puzzle", "Lixit",
     "No spill kennel cup", "Pet Gravity Waterer", "Plastic bird toy", "Post Scratcher",
-    "Table top stand", "Trixie turn around", "Crate", "Lawn sprinkler", "Animal Decoys", "Astro Tube", "Lickin layers dog puzzle",
+    "Table top stand", "Trixie turn around",
   ]),
   ...makeItems("Hard Plastic", [
-    "Animal Cap Feeder", "Collapsible Ladder", "4 Tube Feeder", "Amazing Graze",
-    "Boomer Ball Bobbin", "Bullet Feeder", "Caitec Fillable Bird Ball", "Cat Toy",
-    "Catch Interactive Feeder", "Crumble Disk Holder", "Foraging Ball", "Foraging Feeder",
-    "Hanging Foraging Ball", "Hanging Snack Ball", "Hay Play Feeder", "Holey Moley",
-    "Honeycomb", "Jolly Pets Teaser Ball", "Kong Wobblers", "Likit Snak A Ball",
-    "Milkcrate", "Mini plastic feeder", "Naturalistic Log Feeder",
-    "Plastic Tub", "Plastic Tunnel", "Prima-forager", "Primate foraging unit 1", "Primate foraging unit 2",
-    "Puzzle feeder", "PVC", "Rocky Lou Feeder", "Saurus Egg", "Scent Ball",
+    "4 Tube Feeder", "Amazing Graze", "Animal Cap Feeder", "Boomer Ball Bobbin",
+    "Bucket", "Bullet Feeder", "Caitec Fillable Bird Ball", "Cat Toy",
+    "Catch Interactive Feeder", "Chainlink feeder", "Collapsible Ladder", "Crumble Disk Holder",
+    "Foraging Ball", "Foraging Feeder", "Hanging Foraging Ball", "Hanging Snack Ball",
+    "Hay Play Feeder", "Holey Moley", "Honeycomb", "Jolly Pets Teaser Ball",
+    "Kong Wobblers", "Likit Snak A Ball", "Milkcrate", "Mini plastic feeder",
+    "Naturalistic Log Feeder", "Plastic Tub", "Plastic Tunnel", "Prima-forager",
+    "Primate foraging unit 1", "Primate foraging unit 2", "Puzzle feeder", "PVC",
+    "Rock bowl", "Rocky Lou Feeder", "Saurus Egg", "Scent Ball",
     "Shake-A-Treat", "Shroom Room", "Slide", "Slow feeder", "Snack Shack",
     "Target", "Test tube rack", "Trough", "Water jug", "Water pan",
-    "Wobble Ball", "Zoo Hanging Food Ball", "Bucket", "Chainlink feeder", "Rock bowl",
+    "Wobble Ball", "Zoo Hanging Food Ball",
   ]),
   ...makeItems("Soft Plastic", [
-    "Plastic egg", "Foam",
+    "Foam", "Plastic egg",
   ]),
   ...makeItems("Rubber", [
     "Hol-ee Roller", "Jolly Pets Tug-n-Toss", "Otto Pinecone Forager", "TireBiter with Chain",
@@ -408,7 +410,7 @@ const IMAGES: ImageData[] = [
     "Silicone slow feeder",
   ]),
   ...makeItems("Wood", [
-    "Basket", "Ladder", "Nest Box", "Perch", "Latchboard", "Paintbrush", "Xylophone",
+    "Basket", "Ladder", "Latchboard", "Nest Box", "Paintbrush", "Perch", "Xylophone",
   ]),
 ];
 
