@@ -145,6 +145,7 @@ import waterPan from "@assets/Water_pan_1779082836359.jpeg";
 import wobbleBall from "@assets/Wobble_Ball_1779082836359.jpeg";
 import zooHangingFoodBall from "@assets/Zoo_Hanging_Food_Ball_1779082836359.jpeg";
 import chainlinkFeeder from "@assets/Chainlink_feeder_1779165685314.jpg";
+import rockBowl from "@assets/Rock_Bowl_1779165791529.webp";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal extract": animalExtract,
@@ -288,6 +289,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Wobble Ball": wobbleBall,
   "Zoo Hanging Food Ball": zooHangingFoodBall,
   "Chainlink feeder": chainlinkFeeder,
+  "Rock bowl": rockBowl,
 };
 
 interface ImageData {
@@ -391,7 +393,7 @@ const IMAGES: ImageData[] = [
     "Puzzle feeder", "PVC", "Rocky Lou Feeder", "Saurus Egg", "Scent Ball",
     "Shake-A-Treat", "Shroom Room", "Slide", "Slow feeder", "Snack Shack",
     "Target", "Test tube rack", "Trough", "Water jug", "Water pan",
-    "Wobble Ball", "Zoo Hanging Food Ball", "Bucket", "Chainlink feeder",
+    "Wobble Ball", "Zoo Hanging Food Ball", "Bucket", "Chainlink feeder", "Rock bowl",
   ]),
   ...makeItems("Soft Plastic", [
     "Plastic egg", "Foam",
