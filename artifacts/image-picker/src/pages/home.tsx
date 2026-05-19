@@ -148,6 +148,7 @@ import chainlinkFeeder from "@assets/Chainlink_feeder_1779165685314.jpg";
 import rockBowl from "@assets/Rock_Bowl_1779165791529.webp";
 import newDietItem from "@assets/New_diet_item_1779166845833.jpeg";
 import ballPitBall from "@assets/Ball_pit_ball_1779167152247.webp";
+import wiffleBall from "@assets/Wiffle_ball_1779167563001.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -294,6 +295,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Rock bowl": rockBowl,
   "New diet item": newDietItem,
   "Ball pit ball": ballPitBall,
+  "Wiffle ball": wiffleBall,
 };
 
 interface ImageData {
@@ -385,7 +387,7 @@ const IMAGES: ImageData[] = [
     "Grass Drying Rack", "Hayball Enrichment Feeder", "Heart to Tail Pet Feeder",
     "Kiddie pool", "Lawn sprinkler", "Lickin layers dog puzzle", "Lixit",
     "No spill kennel cup", "Pet Gravity Waterer", "Plastic bird toy", "Post Scratcher",
-    "Table top stand", "Trixie turn around",
+    "Table top stand", "Trixie turn around", "Wiffle ball",
   ]),
   ...makeItems("Hard Plastic", [
     "4 Tube Feeder", "Amazing Graze", "Animal Cap Feeder", "Boomer Ball Bobbin",
