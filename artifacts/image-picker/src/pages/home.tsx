@@ -149,6 +149,7 @@ import rockBowl from "@assets/Rock_Bowl_1779165791529.webp";
 import newDietItem from "@assets/New_diet_item_1779166845833.jpeg";
 import ballPitBall from "@assets/Ball_pit_ball_1779167152247.webp";
 import wiffleBall from "@assets/Wiffle_ball_1779167563001.jpeg";
+import blindForagingCups from "@assets/Blind_foraging_cups_1779503360809.jpg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -296,6 +297,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "New diet item": newDietItem,
   "Ball pit ball": ballPitBall,
   "Wiffle ball": wiffleBall,
+  "Blind foraging cups": blindForagingCups,
 };
 
 interface ImageData {
@@ -382,7 +384,7 @@ const IMAGES: ImageData[] = [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
   ]),
   ...makeItems("Plastic", [
-    "Animal Decoys", "Astro Tube", "Astroturf", "Bird feeder", "Crate",
+    "Animal Decoys", "Astro Tube", "Astroturf", "Bird feeder", "Blind foraging cups", "Crate",
     "Featherland Paradise Push and Pull", "Foraging cups", "Foraging Wheel Bird Toy",
     "Grass Drying Rack", "Hayball Enrichment Feeder", "Heart to Tail Pet Feeder",
     "Kiddie pool", "Lawn sprinkler", "Lickin layers dog puzzle", "Lixit",
