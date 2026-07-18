@@ -166,6 +166,7 @@ import greenSpinningPuzzleFeeder from "@assets/Green_spinning_puzzle_toy_1784348
 import jollyBallPushNPlay from "@assets/Jolly_Ball_Push-N-Play_1784348993778.jpeg";
 import funnyFloat from "@assets/Funny_Float_1784349033581.jpg";
 import lippedRing from "@assets/Lipped_Ring_1784349074589.jpg";
+import rubberTire from "@assets/Rubber_tire_1784349126769.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -330,6 +331,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Jolly Ball Push-N-Play": jollyBallPushNPlay,
   "Funny Float": funnyFloat,
   "Lipped Ring": lippedRing,
+  "Rubber tire": rubberTire,
 };
 
 interface ImageData {
@@ -444,7 +446,7 @@ const IMAGES: ImageData[] = [
     "Hol-ee Roller", "Jolly Pets Tug-n-Toss", "Otto Pinecone Forager", "TireBiter with Chain",
   ]),
   ...makeItems("Hard Rubber", [
-    "Busy Buddy Twist-N-Treat", "Kong", "Quest forager flower", "Rubber Water Tub",
+    "Busy Buddy Twist-N-Treat", "Kong", "Quest forager flower", "Rubber tire", "Rubber Water Tub",
   ]),
   ...makeItems("Soft Rubber", [
     "Silicone slow feeder",
