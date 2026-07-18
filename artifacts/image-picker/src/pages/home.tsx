@@ -160,6 +160,7 @@ import water from "@assets/Water_1784348564579.jpeg";
 import gourd from "@assets/Gourd_1784348598643.jpeg";
 import kaytreeHayAndFoodBinFeeder from "@assets/Kaytree_Hay_and_Food_Bin_Feeder_1784348712108.webp";
 import equiEssentialsTreatBall from "@assets/Equi-Essentials_Treat_Ball_1784348820033.jpg";
+import primateEnrichmentTreatTube from "@assets/Primate_Enrichment_Treat_Tube_1784348860565.jpg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -318,6 +319,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Gourd": gourd,
   "Kaytree Hay and Food Bin Feeder": kaytreeHayAndFoodBinFeeder,
   "Equi-Essentials Treat Ball": equiEssentialsTreatBall,
+  "Primate Enrichment Treat Tube": primateEnrichmentTreatTube,
 };
 
 interface ImageData {
@@ -419,7 +421,7 @@ const IMAGES: ImageData[] = [
     "Hay Play Feeder", "Holey Moley", "Honeycomb", "Jolly Pets Teaser Ball", "Kaytree Hay and Food Bin Feeder",
     "Kong Wobblers", "Likit Snak A Ball", "Milkcrate", "Mini plastic feeder",
     "Naturalistic Log Feeder", "Plastic Tub", "Plastic Tunnel", "Prima-forager",
-    "Primate foraging unit 1", "Primate foraging unit 2", "Puzzle feeder", "PVC",
+    "Primate Enrichment Treat Tube", "Primate foraging unit 1", "Primate foraging unit 2", "Puzzle feeder", "PVC",
     "Rock bowl", "Rocky Lou Feeder", "Saurus Egg", "Scent Ball",
     "Shake-A-Treat", "Shroom Room", "Slide", "Slow feeder", "Snack Shack",
     "Target", "Test tube rack", "Trough", "Water jug", "Water pan",
