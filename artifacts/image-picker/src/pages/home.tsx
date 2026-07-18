@@ -396,7 +396,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Natural Material", [
     "Animal by-product", "Bamboo", "Browse", "Coconut husk", "Feather",
-    "Fine pine", "Fur", "Gourd", "Kaytree Hay and Food Bin Feeder", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
+    "Fine pine", "Fur", "Gourd", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
   ]),
   ...makeItems("Paper", [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
@@ -414,7 +414,7 @@ const IMAGES: ImageData[] = [
     "Bucket", "Bullet Feeder", "Caitec Fillable Bird Ball", "Cat Toy",
     "Catch Interactive Feeder", "Chainlink feeder", "Collapsible Ladder", "Crumble Disk Holder",
     "Foraging Ball", "Foraging Feeder", "Hanging Foraging Ball", "Hanging Snack Ball",
-    "Hay Play Feeder", "Holey Moley", "Honeycomb", "Jolly Pets Teaser Ball",
+    "Hay Play Feeder", "Holey Moley", "Honeycomb", "Jolly Pets Teaser Ball", "Kaytree Hay and Food Bin Feeder",
     "Kong Wobblers", "Likit Snak A Ball", "Milkcrate", "Mini plastic feeder",
     "Naturalistic Log Feeder", "Plastic Tub", "Plastic Tunnel", "Prima-forager",
     "Primate foraging unit 1", "Primate foraging unit 2", "Puzzle feeder", "PVC",
