@@ -162,6 +162,7 @@ import kaytreeHayAndFoodBinFeeder from "@assets/Kaytree_Hay_and_Food_Bin_Feeder_
 import equiEssentialsTreatBall from "@assets/Equi-Essentials_Treat_Ball_1784348820033.jpg";
 import primateEnrichmentTreatTube from "@assets/Primate_Enrichment_Treat_Tube_1784348860565.jpg";
 import rabbitNasium from "@assets/Rabbit_Nasium_1784348894681.jpeg";
+import greenSpinningPuzzleFeeder from "@assets/Green_spinning_puzzle_toy_1784348960506.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -322,6 +323,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Equi-Essentials Treat Ball": equiEssentialsTreatBall,
   "Primate Enrichment Treat Tube": primateEnrichmentTreatTube,
   "Rabbit Nasium": rabbitNasium,
+  "Green spinning puzzle feeder": greenSpinningPuzzleFeeder,
 };
 
 interface ImageData {
@@ -419,7 +421,7 @@ const IMAGES: ImageData[] = [
     "4 Tube Feeder", "Amazing Graze", "Animal Cap Feeder", "Boomer Ball Bobbin",
     "Bucket", "Bullet Feeder", "Caitec Fillable Bird Ball", "Cat Toy",
     "Catch Interactive Feeder", "Chainlink feeder", "Collapsible Ladder", "Crumble Disk Holder",
-    "Equi-Essentials Treat Ball", "Foraging Ball", "Foraging Feeder", "Hanging Foraging Ball", "Hanging Snack Ball",
+    "Equi-Essentials Treat Ball", "Foraging Ball", "Foraging Feeder", "Green spinning puzzle feeder", "Hanging Foraging Ball", "Hanging Snack Ball",
     "Hay Play Feeder", "Holey Moley", "Honeycomb", "Jolly Pets Teaser Ball", "Kaytree Hay and Food Bin Feeder",
     "Kong Wobblers", "Likit Snak A Ball", "Milkcrate", "Mini plastic feeder",
     "Naturalistic Log Feeder", "Plastic Tub", "Plastic Tunnel", "Prima-forager",
