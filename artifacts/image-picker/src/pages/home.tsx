@@ -156,6 +156,7 @@ import phone from "@assets/Phone_1784340193835.jpeg";
 import heavyDutyPVCForageBag from "@assets/Heavy_Duty_PVC_Forage_Bag_1784340325075.jpeg";
 import blanket from "@assets/Blanket_1784348431813.webp";
 import snuffleMat from "@assets/Snuffle_mat_1784348464260.webp";
+import water from "@assets/Water_1784348564579.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -310,6 +311,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Heavy Duty PVC Forage Bag": heavyDutyPVCForageBag,
   "Blanket": blanket,
   "Snuffle mat": snuffleMat,
+  "Water": water,
 };
 
 interface ImageData {
@@ -390,7 +392,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Natural Material", [
     "Animal by-product", "Bamboo", "Browse", "Coconut husk", "Feather",
-    "Fine pine", "Fur", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw",
+    "Fine pine", "Fur", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
   ]),
   ...makeItems("Paper", [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
