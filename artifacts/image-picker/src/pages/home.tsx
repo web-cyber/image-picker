@@ -158,6 +158,7 @@ import blanket from "@assets/Blanket_1784348431813.webp";
 import snuffleMat from "@assets/Snuffle_mat_1784348464260.webp";
 import water from "@assets/Water_1784348564579.jpeg";
 import gourd from "@assets/Gourd_1784348598643.jpeg";
+import kaytreeHayAndFoodBinFeeder from "@assets/Kaytree_Hay_and_Food_Bin_Feeder_1784348712108.webp";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -314,6 +315,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Snuffle mat": snuffleMat,
   "Water": water,
   "Gourd": gourd,
+  "Kaytree Hay and Food Bin Feeder": kaytreeHayAndFoodBinFeeder,
 };
 
 interface ImageData {
@@ -394,7 +396,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Natural Material", [
     "Animal by-product", "Bamboo", "Browse", "Coconut husk", "Feather",
-    "Fine pine", "Fur", "Gourd", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
+    "Fine pine", "Fur", "Gourd", "Kaytree Hay and Food Bin Feeder", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
   ]),
   ...makeItems("Paper", [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
