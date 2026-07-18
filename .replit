@@ -3,7 +3,7 @@ modules = ["nodejs-24"]
 [deployment]
 router = "application"
 deploymentTarget = "static"
-publicDir = "out"
+publicDir = "artifacts/image-picker/dist/public"
 
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
