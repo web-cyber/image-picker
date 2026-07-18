@@ -159,6 +159,7 @@ import snuffleMat from "@assets/Snuffle_mat_1784348464260.webp";
 import water from "@assets/Water_1784348564579.jpeg";
 import gourd from "@assets/Gourd_1784348598643.jpeg";
 import kaytreeHayAndFoodBinFeeder from "@assets/Kaytree_Hay_and_Food_Bin_Feeder_1784348712108.webp";
+import equiEssentialsTreatBall from "@assets/Equi-Essentials_Treat_Ball_1784348820033.jpg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -316,6 +317,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Water": water,
   "Gourd": gourd,
   "Kaytree Hay and Food Bin Feeder": kaytreeHayAndFoodBinFeeder,
+  "Equi-Essentials Treat Ball": equiEssentialsTreatBall,
 };
 
 interface ImageData {
@@ -413,7 +415,7 @@ const IMAGES: ImageData[] = [
     "4 Tube Feeder", "Amazing Graze", "Animal Cap Feeder", "Boomer Ball Bobbin",
     "Bucket", "Bullet Feeder", "Caitec Fillable Bird Ball", "Cat Toy",
     "Catch Interactive Feeder", "Chainlink feeder", "Collapsible Ladder", "Crumble Disk Holder",
-    "Foraging Ball", "Foraging Feeder", "Hanging Foraging Ball", "Hanging Snack Ball",
+    "Equi-Essentials Treat Ball", "Foraging Ball", "Foraging Feeder", "Hanging Foraging Ball", "Hanging Snack Ball",
     "Hay Play Feeder", "Holey Moley", "Honeycomb", "Jolly Pets Teaser Ball", "Kaytree Hay and Food Bin Feeder",
     "Kong Wobblers", "Likit Snak A Ball", "Milkcrate", "Mini plastic feeder",
     "Naturalistic Log Feeder", "Plastic Tub", "Plastic Tunnel", "Prima-forager",
