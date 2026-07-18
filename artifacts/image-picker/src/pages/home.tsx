@@ -154,6 +154,7 @@ import wireMeshBox from "@assets/Wire_mesh_box_1779503387398.jpg";
 import person from "@assets/Person_1779503697580.jpg";
 import phone from "@assets/Phone_1784340193835.jpeg";
 import heavyDutyPVCForageBag from "@assets/Heavy_Duty_PVC_Forage_Bag_1784340325075.jpeg";
+import blanket from "@assets/Blanket_1784348431813.webp";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -306,6 +307,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Person": person,
   "Phone": phone,
   "Heavy Duty PVC Forage Bag": heavyDutyPVCForageBag,
+  "Blanket": blanket,
 };
 
 interface ImageData {
@@ -372,7 +374,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Burlap", []),
   ...makeItems("Soft Fabric", [
-    "Baby toy",
+    "Baby toy", "Blanket",
   ]),
   ...makeItems("Metal", [
     "ASAP Mirror", "Bell", "Bingo Ball", "Caitec Baffle Cage", "Caitec Stainless Steel Kabob",
