@@ -153,6 +153,7 @@ import blindForagingCups from "@assets/Blind_foraging_cups_1779503360809.jpg";
 import wireMeshBox from "@assets/Wire_mesh_box_1779503387398.jpg";
 import person from "@assets/Person_1779503697580.jpg";
 import phone from "@assets/Phone_1784340193835.jpeg";
+import heavyDutyPVCForageBag from "@assets/Heavy_Duty_PVC_Forage_Bag_1784340325075.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -304,6 +305,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Wire mesh box": wireMeshBox,
   "Person": person,
   "Phone": phone,
+  "Heavy Duty PVC Forage Bag": heavyDutyPVCForageBag,
 };
 
 interface ImageData {
@@ -366,7 +368,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Rope", []),
   ...makeItems("Strong Fabric", [
-    "Burlap", "Elevated Dog Bed", "Firehose", "Gorilla Buster Bungee", "Hammock", "Nibblenet",
+    "Burlap", "Elevated Dog Bed", "Firehose", "Gorilla Buster Bungee", "Hammock", "Heavy Duty PVC Forage Bag", "Nibblenet",
   ]),
   ...makeItems("Burlap", []),
   ...makeItems("Soft Fabric", [
