@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
-  res.json({ status: "ok" });
+  res.redirect(302, "https://image-picker-inky.vercel.app");
 });
 
 app.use("/api", router);
