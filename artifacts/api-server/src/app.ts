@@ -3,7 +3,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import express, { type Express, type RequestHandler } from "express";
 import cors from "cors";
 import router from "./routes/index.js";
-import { logger } from "./lib/logger";
+import { logger } from "./lib/logger.js";
 
 const require = createRequire(import.meta.url);
 const pinoHttp = require("pino-http") as (opts?: unknown) => RequestHandler;
