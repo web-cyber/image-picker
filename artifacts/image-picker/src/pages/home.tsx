@@ -167,6 +167,7 @@ import jollyBallPushNPlay from "@assets/Jolly_Ball_Push-N-Play_1784348993778.jpe
 import funnyFloat from "@assets/Funny_Float_1784349033581.jpg";
 import lippedRing from "@assets/Lipped_Ring_1784349074589.jpg";
 import rubberTire from "@assets/Rubber_tire_1784349126769.jpeg";
+import firehosePocketFeeder from "@assets/Firehose_Pocket_Feeder.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -197,6 +198,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Trixie turn around": trixieTurnAround,
   "Lickin layers dog puzzle": lickinLayersDogPuzzle,
   "Basket": basket,
+  "Firehose Pocket Feeder": firehosePocketFeeder,
   "Ladder": ladder,
   "Latchboard": latchboard,
   "Nest Box": nestBox,
@@ -453,7 +455,7 @@ const IMAGES: ImageData[] = [
     "Silicone slow feeder",
   ]),
   ...makeItems("Wood", [
-    "Basket", "Ladder", "Latchboard", "Nest Box", "Paintbrush", "Perch", "Xylophone",
+    "Basket", "Firehose Pocket Feeder","Ladder", "Latchboard", "Nest Box", "Paintbrush", "Perch", "Xylophone",
   ]),
 ];
 
