@@ -322,6 +322,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Blanket": blanket,
   "Snuffle mat": snuffleMat,
   "Water": water,
+  "Shell": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe6TjOJ0sJXFCYl8e72PBJz1mgGG6A6UQJxY7VULsXIQ&s=10",
   "Gourd": gourd,
   "Kaytree Hay and Food Bin Feeder": kaytreeHayAndFoodBinFeeder,
   "Equi-Essentials Treat Ball": equiEssentialsTreatBall,
@@ -412,7 +413,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Natural Material", [
     "Animal by-product", "Bamboo", "Browse", "Coconut husk", "Feather",
-    "Fine pine", "Fur", "Gourd", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
+    "Fine pine", "Fur", "Gourd", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Shell", "Stone", "Straw", "Water",
   ]),
   ...makeItems("Paper", [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
