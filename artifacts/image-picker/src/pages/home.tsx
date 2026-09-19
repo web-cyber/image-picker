@@ -167,6 +167,7 @@ import jollyBallPushNPlay from "@assets/Jolly_Ball_Push-N-Play_1784348993778.jpe
 import funnyFloat from "@assets/Funny_Float_1784349033581.jpg";
 import lippedRing from "@assets/Lipped_Ring_1784349074589.jpg";
 import rubberTire from "@assets/Rubber_tire_1784349126769.jpeg";
+import firehosePocketFeeder from "@assets/Firehose_Pocket_Feeder.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -197,6 +198,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Trixie turn around": trixieTurnAround,
   "Lickin layers dog puzzle": lickinLayersDogPuzzle,
   "Basket": basket,
+  "Firehose Pocket Feeder": firehosePocketFeeder,
   "Ladder": ladder,
   "Latchboard": latchboard,
   "Nest Box": nestBox,
@@ -322,6 +324,7 @@ const IMAGE_SRCS: Record<string, string> = {
   "Blanket": blanket,
   "Snuffle mat": snuffleMat,
   "Water": water,
+  "Shell": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe6TjOJ0sJXFCYl8e72PBJz1mgGG6A6UQJxY7VULsXIQ&s=10",
   "Gourd": gourd,
   "Kaytree Hay and Food Bin Feeder": kaytreeHayAndFoodBinFeeder,
   "Equi-Essentials Treat Ball": equiEssentialsTreatBall,
@@ -412,7 +415,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Natural Material", [
     "Animal by-product", "Bamboo", "Browse", "Coconut husk", "Feather",
-    "Fine pine", "Fur", "Gourd", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Stone", "Straw", "Water",
+    "Fine pine", "Fur", "Gourd", "Mulch", "New diet item", "Orchard grass", "Sand", "Seasoning", "Shell", "Stone", "Straw", "Water",
   ]),
   ...makeItems("Paper", [
     "Cardboard", "Paper", "Shredded paper", "Wrapping paper",
@@ -452,7 +455,7 @@ const IMAGES: ImageData[] = [
     "Silicone slow feeder",
   ]),
   ...makeItems("Wood", [
-    "Basket", "Ladder", "Latchboard", "Nest Box", "Paintbrush", "Perch", "Xylophone",
+    "Basket", "Firehose Pocket Feeder","Ladder", "Latchboard", "Nest Box", "Paintbrush", "Perch", "Xylophone",
   ]),
 ];
 
