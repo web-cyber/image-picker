@@ -168,6 +168,8 @@ import funnyFloat from "@assets/Funny_Float_1784349033581.jpg";
 import lippedRing from "@assets/Lipped_Ring_1784349074589.jpg";
 import rubberTire from "@assets/Rubber_tire_1784349126769.jpeg";
 import firehosePocketFeeder from "@assets/Firehose_Pocket_Feeder.jpeg";
+import otterRing from "@assets/Otter Ring.JPG";
+import stackedChips from "@assets/Stacked Chips.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
@@ -335,6 +337,8 @@ const IMAGE_SRCS: Record<string, string> = {
   "Funny Float": funnyFloat,
   "Lipped Ring": lippedRing,
   "Rubber tire": rubberTire,
+  "Otter Ring": otterRing,
+  "Stacked Chips": stackedChips,
 };
 
 interface ImageData {
@@ -397,7 +401,7 @@ const IMAGES: ImageData[] = [
   ]),
   ...makeItems("Rope", []),
   ...makeItems("Strong Fabric", [
-    "Burlap", "Elevated Dog Bed", "Firehose", "Gorilla Buster Bungee", "Hammock", "Heavy Duty PVC Forage Bag", "Nibblenet",
+    "Burlap", "Elevated Dog Bed", "Firehose", "Gorilla Buster Bungee", "Hammock", "Heavy Duty PVC Forage Bag", "Nibblenet", "Otter Ring",
   ]),
   ...makeItems("Burlap", []),
   ...makeItems("Soft Fabric", [
@@ -438,7 +442,7 @@ const IMAGES: ImageData[] = [
     "Naturalistic Log Feeder", "Plastic Tub", "Plastic Tunnel", "Prima-forager",
     "Primate Enrichment Treat Tube", "Primate foraging unit 1", "Primate foraging unit 2", "Puzzle feeder", "PVC",
     "Rabbit Nasium", "Rock bowl", "Rocky Lou Feeder", "Saurus Egg", "Scent Ball",
-    "Shake-A-Treat", "Shroom Room", "Slide", "Slow feeder", "Snack Shack",
+    "Shake-A-Treat", "Shroom Room", "Slide", "Slow feeder", "Snack Shack", "Stacked Chips",
     "Target", "Test tube rack", "Trough", "Water jug", "Water pan",
     "Wobble Ball", "Zoo Hanging Food Ball",
   ]),
