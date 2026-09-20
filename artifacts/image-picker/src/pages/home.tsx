@@ -168,8 +168,8 @@ import funnyFloat from "@assets/Funny_Float_1784349033581.jpg";
 import lippedRing from "@assets/Lipped_Ring_1784349074589.jpg";
 import rubberTire from "@assets/Rubber_tire_1784349126769.jpeg";
 import firehosePocketFeeder from "@assets/Firehose_Pocket_Feeder.jpeg";
-import otterRing from "@assets/Otter_Ring.JPG";
-import stackedChips from "@assets/Stacked_Chips.jpeg";
+import otterRing from "@assets/Otter Ring.JPG";
+import stackedChips from "@assets/Stacked Chips.jpeg";
 
 const IMAGE_SRCS: Record<string, string> = {
   "Animal by-product": animalExtract,
